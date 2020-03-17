@@ -9,9 +9,20 @@ function validFirstName() {
 	pattern=^[A-Z]{1}[a-z]{2}[a-z]?
 	if [[ $firstName =~ $pattern ]]
 	 then
-		echo "validated first name"
+		echo "valid first name"
 	 else
 		validFirstName
 	fi
 }
+function validLastName() {
+   read -p "Enter valid last name: " lastName
+   pattern=^[A-Z]{1}[a-z]{2}[a-z]?
+   if [[ $lastName =~ $pattern ]]
+    then
+      echo "valid last name"
+    else
+      validLastName
+   fi
+}
 validFirstName
+validLastName
