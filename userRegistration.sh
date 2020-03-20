@@ -6,7 +6,7 @@
 
 function validFirstName() {
 	read -p "Enter valid first name: " firstName
-	pattern=^[A-Z][a-z]{2}[a-z]*$
+	pattern="^[A-Z][a-z]{2}[a-z]*$"
 	if [[ $firstName =~ $pattern ]]
 	 then
 		echo "valid first name"
@@ -17,7 +17,7 @@ function validFirstName() {
 }
 function validLastName() {
    read -p "Enter valid last name: " lastName
-   pattern=^[A-Z][a-z]{2}[a-z]*$
+   pattern="^[A-Z][a-z]{2}[a-z]*$"
    if [[ $lastName =~ $pattern ]]
     then
       echo "valid last name"
@@ -37,6 +37,18 @@ function validEmail() {
 		validEmail
 	fi
 }
+function validMobileNumber() {
+	read -p "Enter your mobile number with country code: " number
+	pattern="\<^[0-9]{2}[ ][0-9]{10}\>"
+	if [[ $number =~ $pattern ]]
+	 then
+		echo "Number is valid"
+	 else
+		echo "Number is not valid"
+		validMobileNumber
+	fi
+}
 validFirstName
 validLastName
 validEmail
+validMobileNumber
