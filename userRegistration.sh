@@ -51,11 +51,18 @@ function validMobileNumber() {
 function validPassword() {
 	local LENGTH=8
 	read -p "Choose Password: " password
+	pattern=[A-Z]
 	if [[ ${#password} == $LENGTH ]]
 	 then
-		echo "valid password"
+		if [[ $password =~ $pattern ]]
+		 then
+			echo "valid password"
+	 	 else
+			echo "password is not valid"
+			validPassword
+		fi
 	 else
-		echo "password is not valid"
+		echo "password should contain minimum 8 characters "
 		validPassword
 	fi
 }
