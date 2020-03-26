@@ -48,7 +48,19 @@ function validMobileNumber() {
 		validMobileNumber
 	fi
 }
+function validPassword() {
+	local LENGTH=8
+	read -p "Choose Password: " password
+	if [[ ${#password} == $LENGTH ]]
+	 then
+		echo "valid password"
+	 else
+		echo "password is not valid"
+		validPassword
+	fi
+}
 validFirstName
 validLastName
 validEmail
 validMobileNumber
+validPassword
