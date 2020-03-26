@@ -49,12 +49,13 @@ function validMobileNumber() {
 	fi
 }
 function validPassword() {
-	local LENGTH=8
+	local LENGTH=7
 	read -p "Choose Password: " password
-	pattern="^[a-zA-Z0-9]*[A-Z]+[a-zA-Z0-9]*[0-9]+[a-zA-Z0-9]*$"
-	if [[ ${#password} == $LENGTH ]]
+	pattern="^[a-zA-Z0-9!@#$%^&*]*[A-Z]+[a-zA-Z0-9!@#$%^&*]*[0-9]+[a-zA-Z0-9!@#$%^&*]*$"
+   charactersPattern="[!@#$%^&*]{1}"
+	if [[ ${#password} -gt $LENGTH ]]
 	 then
-		if [[ $password =~ $pattern ]]
+		if [[ $password =~ $pattern && $password =~ $charactersPattern ]]
 		 then
 			echo "valid password"
 	 	 else
