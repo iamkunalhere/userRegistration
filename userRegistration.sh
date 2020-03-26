@@ -4,10 +4,14 @@
 #Author : Kunal Jadhav
 #Date : 17 March 2020
 
+patternForName="^[A-Z][a-z]{2}[a-z]*$"
+patternForEmail="^[a-z][a-z0-9]*[.+-]?[a-z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]{2,3}([.]{1}[a-z]{2,3})?$"
+patternForNumber="\<^[0-9]{2}[ ][0-9]{10}\>"
+patternForPassword="^[a-zA-Z0-9!@#$%^&*]*[A-Z]+[a-zA-Z0-9!@#$%^&*]*[0-9]+[a-zA-Z0-9!@#$%^&*]*$"
+patternForSpecialChar="[!@#$%^&*]{1}"
 function validFirstName() {
 	read -p "Enter valid first name: " firstName
-	pattern="^[A-Z][a-z]{2}[a-z]*$"
-	if [[ $firstName =~ $pattern ]]
+	if [[ $firstName =~ $patternForName ]]
 	 then
 		echo "valid first name"
 	 else
@@ -17,8 +21,7 @@ function validFirstName() {
 }
 function validLastName() {
    read -p "Enter valid last name: " lastName
-   pattern="^[A-Z][a-z]{2}[a-z]*$"
-   if [[ $lastName =~ $pattern ]]
+   if [[ $lastName =~ $patternForName ]]
     then
       echo "valid last name"
     else
@@ -28,8 +31,7 @@ function validLastName() {
 }
 function validEmail() {
 	read -p "Enter valid Email Address: " email
-	pattern="^[a-z][a-z0-9]*[.+-]?[a-z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]{2,3}([.]{1}[a-z]{2,3})?$"
-	if [[ $email =~ $pattern ]]
+	if [[ $email =~ $patternForEmail ]]
 	 then
 		echo "Email is valid"
 	 else
@@ -39,8 +41,7 @@ function validEmail() {
 }
 function validMobileNumber() {
 	read -p "Enter your mobile number with country code: " number
-	pattern="\<^[0-9]{2}[ ][0-9]{10}\>"
-	if [[ $number =~ $pattern ]]
+	if [[ $number =~ $patternForNumber ]]
 	 then
 		echo "Number is valid"
 	 else
@@ -51,11 +52,9 @@ function validMobileNumber() {
 function validPassword() {
 	local LENGTH=7
 	read -p "Choose Password: " password
-	pattern="^[a-zA-Z0-9!@#$%^&*]*[A-Z]+[a-zA-Z0-9!@#$%^&*]*[0-9]+[a-zA-Z0-9!@#$%^&*]*$"
-   charactersPattern="[!@#$%^&*]{1}"
 	if [[ ${#password} -gt $LENGTH ]]
 	 then
-		if [[ $password =~ $pattern && $password =~ $charactersPattern ]]
+		if [[ $password =~ $patternForPassword && $password =~ $patternForSpecialChar ]]
 		 then
 			echo "valid password"
 	 	 else
